@@ -1,0 +1,135 @@
+# 4.1문자열이란
+sentence1 = '나는 소년입니다'
+print(sentence1, type(sentence1))
+
+sentence2 = "나는 소년입니다"
+print(sentence2, type(sentence2))
+
+sentence3 = """
+나는 소년이고,
+파이썬은 쉬워요.
+"""
+print(sentence3)
+
+## 4.2 원하는 만큼 문자열 자르기 : 슬라이싱
+jumin = "990229-1234567"
+print("성별 식별번호 : "+ jumin[7])
+
+jumin = "990229-1234567"
+print("연 : " + jumin[0:2])
+print("월 : " + jumin[2:4])
+print("일 : " + jumin[4:6])
+
+print("생년월일 : "+ jumin[:6])
+print("주민등록번호 뒷자리 : " + jumin[7:])
+print("주민등록번호 뒷자리(뒤에서부터 : )" + jumin[-7:])
+
+## 4.3 함수로 문자열 처리하기
+python = "Python is Amazing"
+
+print(python.lower())
+print(python.upper())
+print(python[0].isupper())
+print(python[1:3].islower())
+print(python.replace("Python", "Java"))
+
+python = "Python is Amazing"
+
+find = python.find("n")
+print(find)
+find = python.find("n", find+1)
+print(find)
+find = python.find("Java")
+print(find)
+index = python.index("Java")
+print(index)
+index = python.index("n")
+print(index)
+index = python.index("n", index+1)
+print(index)
+
+python = "Python is Amazing"
+print(python.count("n"))
+print(python.count("v"))
+
+python = "Python is Amazing"
+print(len(python))
+
+## 4.4 문자열 포매팅
+### 4.4.1 서식 시정자 사용하기
+print("나는 %d살입니다." % 20)
+print("나는 %s를 좋아합니다." % "파이썬")
+print("Apple은 %c로 시작해요" % "A")
+print("나는 %s살입니다." % 20)
+
+print("나는 %s과 %s색을 좋아해요" %("파란","빨강"))
+
+print("나는 {}살입니다.".format(20))
+print("나는 {}색과 {}색을 좋아해요".format("파란","빨강"))
+print("나는 {0}색과 {1}색을 좋아해요".format("파란","빨강"))
+print("나는 {1}색과 {0}색을 좋아해요".format("파란","빨강"))
+
+print("나는 {age}살이며, {color}색을 좋아해요".format(age=20,color="빨강"))
+print("나는 {age}살이며, {color}색을 좋아해요".format(color="빨강",age=20))
+
+### 4.4.3 f-문자열 사용하기
+age = 20
+color = "빨강"
+print(f"나는 {age}살이며, {color}색을 좋아해요.")
+
+## 4.5 탈출 문자
+### 4.5.1 \n
+print("백문이 불여일견\n백견이 불여일타")
+### 4.5.2 \"와 \'
+print("저는 '나는코딩'입니다")
+print('저는 "나는코딩"입니다.')
+
+print("저는 \"나는코딩\"입니다")
+print('저는 \'나는코딩\'입니다.')
+
+### 4.5.3 \\
+print("C:\\Users\\Nodocoding\\Desktop\\PythonWorkspace")
+print(r"C:\User\Nadocoding\Desktop\PythonWorkspace")
+
+#### 4.5.4 \r
+print("Red Apple\rPine")
+
+### 4.5.5 \b
+print("Redd\bApple")
+print("Banana\b\b\b\b\b\bApple")
+
+### 4.5.6 \t
+print("Red\tApple")
+
+## 4.6 실습문제 : 비밀번호 만들기
+"""
+사이트별로 비밀번호를 생성하는 프로그램을 작성
+http://naver.com
+http://daum.net
+http://google.com
+http://youtube.com
+
+1. http://부분은 제외
+2. 처음 만나는 점(.)이후 부분도 제외
+3. 남은 글자 중 처음 세자리 + 글자 수 + 글자 내 'e'의 개수 + '!'로 구성
+4. 프로그램을 실행했을 때 실행 결과는 다음형태로 나와야 함
+    http://naver.com의 비밀번호는 nav51입니다.
+
+"""
+
+#site = "http://naver.com"
+site = "http://daum.net"
+sitename = site.replace("http://","")
+endIndex = sitename.find(".")
+sitename = sitename[0:endIndex]
+password = "{0}{1}{2}!".format(sitename[:3], len(sitename), sitename.count("e"))
+print("{0}의 비밀번호는 {1}입니다.".format(site, password))
+
+#셀프 체크
+"""
+영어 문장이 주어졌을 때, 첫 번째 글자는 대문자로, 나머지 글자는 모두 소문자로 변환하는 프로그램을 작성하시오
+"""
+str = "The early BIrd catches the worm"
+str = str.lower()
+str = "{0}{1}".format(str[0].upper(),str[1:])
+print(str)
